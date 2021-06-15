@@ -1,4 +1,4 @@
-###K8S
+### K8S
 - 压测遇到cpu throttling问题 resources - requests 和 limits
 > 这是一个 Linux 内核的 Bug，他会对设置了 CPU 限制的容器进行不必要的流控。 升级4.19 或更高版本的 Linux 发行版已经纠正了该问题
 
