@@ -1,4 +1,4 @@
-### K8S
+###K8S
 - 压测遇到cpu throttling问题 resources - requests 和 limits
 > 这是一个 Linux 内核的 Bug，他会对设置了 CPU 限制的容器进行不必要的流控。 升级4.19 或更高版本的 Linux 发行版已经纠正了该问题
 
@@ -15,4 +15,4 @@
 > 使用azure弹性扩容的node外网不通，做了抓包和ping测试，需要重启node服务器解决， 已和工单反馈确认问题。
 
 - nodeAffinity podAffinity ，node、pod亲和性；podAnitAffinity反亲和性。
-   >在schedule调度过程中，如果目标使用亲和性策略 但是目标亲和性服务器资源不足当前分配的内存和cpu数，则pod生命周期就会报CrashLoopBackOff 无法成功添加工作节点的问题。 最好配合PodDisruptionBudget（PDB）开启自我保护措施
+> 在schedule调度过程中，如果目标使用亲和性策略 但是目标亲和性服务器资源不足当前分配的内存和cpu数，则pod生命周期就会报CrashLoopBackOff 无法成功添加工作节点的问题。 最好配合PodDisruptionBudget（PDB）开启自我保护措施
