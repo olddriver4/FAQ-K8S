@@ -53,12 +53,13 @@
 - pgpool客户端阻塞  
 
 >   最近遇到一个PgPool连接阻塞问题，PgPool刚开启是能成功连接的，过段时间就连接不上了。查看PgPool日志，启动成功，连接数据库节点成功，健康检查成功。然后怀疑是并发数过多导致阻塞。
-    一开始，更改了pgpool.conf的max_pool,num_init_children参数然后重启，结果仍然阻塞。查资料可知：
-num_init_children：pgPool允许的最大并发数，默认32。
-max_pool：连接池的数量，默认4。
-pgpool需要的数据库连接数=num_init_children*max_pool；
-后检查Postgresql数据库的postgresql.conf文件的max_connections=100，superuser_reserved_connections=3。
-pgpool的连接参数应当满足如下公式：
-num_init_children*max_pool<max_connections-superuser_reserved_connections
+>一开始，更改了pgpool.conf的max_pool,num_init_children参数然后重启，结果仍然阻塞。查资料可知：
+>num_init_children：pgPool允许的最大并发数，默认32。
+>max_pool：连接池的数量，默认4。
+>pgpool需要的数据库连接数=num_init_children*max_pool；
+>后检查Postgresql数据库的postgresql.conf文件的max_connections=100
+>superuser_reserved_connections=3。
+>pgpool的连接参数应当满足如下公式：
+>num_init_children*max_pool<max_connections-superuser_reserved_connections
 
 当需要pgpool支持更多的并发时，需要更改num_init_children参数，同时要检查下num_init_children*max_pool是否超过了max_connections-superuser_reserved_connections，如果超过了，可将max_connections改的更大。
